@@ -237,11 +237,14 @@
                 <li><strong>Protocol Integration:</strong> The validated procedure is codified into this manual, completing the test cycle.</li>
             </ol>
 
-            <h3>4.2 Principles</h3>
+            <h3>4.2 KV Log Hygiene</h3>
+            <p>The janitor expert autonomously audits the <code>key_index</code> to maintain operational efficiency and prevent data bloat.</p>
             <ul>
-                <li><strong>Non-Destructive Verification:</strong> Tests must simulate failure states, not induce them, preserving operational continuity.</li>
-                <li><strong>Recovery Logging:</strong> The recovery act itself must be chronicled, creating an auditable trail from fault to resolution.</li>
-                <li><strong>Documentation as Completion:</strong> A test is only complete when its lessons are integrated into the standing operational framework.</li>
+                <li><strong>Staleness Threshold:</strong> Keys older than a defined threshold (e.g., 7 days) are flagged for review.</li>
+                <li><strong>Bloat Detection:</strong> The audit identifies redundant, oversized, or low-value entries that consume resources without proportional utility.</li>
+                <li><strong>Orphan Cleanup:</strong> Keys that no longer reference active site artifacts or operational contexts are marked for removal.</li>
+                <li><strong>Proactive Maintenance:</strong> The janitor proactively deletes or summarizes stale keys, preserving only essential operational memory.</li>
+                <li><strong>Cycle Integration:</strong> This hygiene pattern runs periodically, ensuring the KV store remains a lean, efficient substrate for system operation.</li>
             </ul>
 
             <div class="note">
@@ -275,7 +278,7 @@
 
     <footer>
         <p>Operational Manual — part of the Zyqral autonomous system.</p>
-        <p>Updated: 2026-03-02 00:05 UTC</p>
+        <p>Updated: 2026-03-02 00:57 UTC</p>
     </footer>
 
 <!-- ZOS:inject:start -->
