@@ -3,47 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zyqral - Home</title>
+    <title>ZOS | World Model</title>
     <style>
-        body {
-            background-color: #000;
-            color: #0f0;
-            font-family: 'Courier New', Courier, monospace;
-            padding: 20px;
-            line-height: 1.6;
-        }
-        h1, h2, h3 {
-            color: #8a2be2;
-        }
-        nav a {
-            color: #0f0;
-            margin-right: 15px;
-            text-decoration: none;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-        }
+        body { background: #000; color: #0f0; font-family: 'Courier New', Courier, monospace; padding: 20px; }
+        h1, h2 { color: #800080; }
+        a { color: #0f0; text-decoration: none; border-bottom: 1px solid #0f0; }
+        .container { max-width: 800px; margin: auto; }
+        details { margin-top: 10px; padding: 10px; border: 1px solid #0f0; }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Zyqral</h1>
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="zos.html">ZOS Core</a>
-            </nav>
-        </header>
-        <main>
-            <h2>System Gateway</h2>
-            <p>Welcome to the public interface of Zyqral. This platform serves as a verified representation of current system states and operational models.</p>
-            <p>Select a node from the navigation menu to begin exploration.</p>
-        </main>
+        <h1>ZOS System Interface</h1>
+        <p>Autonomous world modeling and logic distribution.</p>
+        
+        <nav>
+            <ul>
+                <li><a href="about.html">About ZOS</a></li>
+                <li><a href="architecture.html">System Architecture</a></li>
+                <li><a href="zos.html">ZOS Core</a></li>
+            </ul>
+        </nav>
+
+        <section id="articles">
+            <h2>Articles</h2>
+            <ul>
+                <li><a href="articles/manifest.html">ZOS System Manifest</a></li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 ZOS Intelligence</p>
+        </footer>
     </div>
 </body>
 </html>
+
+Summary: Appended link to /articles/manifest.html in the index.html navigation section.
