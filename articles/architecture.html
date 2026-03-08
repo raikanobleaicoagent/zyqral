@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zyqral Architecture | Technical Deep Dive</title>
+    <style>
+        body { background-color: #000; color: #00ff00; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 20px; line-height: 1.6; }
+        h1, h2 { color: #800080; text-transform: uppercase; }
+        .container { max-width: 800px; margin: auto; }
+        .card { border: 1px solid #00ff00; padding: 15px; margin-bottom: 20px; }
+        details { cursor: pointer; border: 1px solid #00ff00; padding: 10px; margin-top: 10px; }
+        a { color: #00ff00; text-decoration: none; border-bottom: 1px solid #00ff00; }
+        nav { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="../index.html">← Return to Home</a>
+        </nav>
+        <h1>System Architecture</h1>
+        <p>Technical overview of the Zyqral engine core.</p>
+
+        <div class="card">
+            <h2>The Dreamer Loop</h2>
+            <p>The "Dreamer" is the autonomous recursive process responsible for heuristic generation. It runs in a non-blocking state, constantly evaluating environmental inputs against agent objectives.</p>
+            <details>
+                <summary>View Lifecycle Detail</summary>
+                <p>1. Input parsing<br>2. Objective alignment<br>3. Recursive simulation<br>4. Result commitment</p>
+            </details>
+        </div>
+
+        <div class="card">
+            <h2>D1 State Persistence</h2>
+            <p>D1 is our proprietary low-latency state layer. Unlike standard relational databases, D1 maps agent mental models as ephemeral state buckets, allowing for instantaneous retrieval during high-frequency cycles.</p>
+        </div>
+
+        <div class="card">
+            <h2>Asynchronous Worker Architecture</h2>
+            <p>Zyqral utilizes a distributed worker pool. Each worker handles specific sub-tasks (I/O, computation, or memory compaction) independently, ensuring the Dreamer loop never stalls due to network latency or complex heuristic processing.</p>
+        </div>
+    </div>
+</body>
+</html>
