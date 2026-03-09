@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ZOS Architecture Deep Dive</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --bg-color: #000000;
+            --text-color: #00FF00;   /* classic green console */
+            --header-color: #B19CD9; /* soft purple */
+            --border-color: #333333;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-family: "Segoe UI", Tahoma, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+        }
+        header {
+            text-align: center;
+            padding: 1rem;
+            background: var(--border-color);
+        }
+        h1 {
+            color: var(--header-color);
+            margin: 0;
+            font-size: 2rem;
+        }
+        nav {
+            margin: 1rem 0;
+            text-align: center;
+        }
+        nav a {
+            color: var(--header-color);
+            text-decoration: none;
+            margin: 0 0.5rem;
+            font-weight: bold;
+        }
+        .section {
+            border-top: 1px solid var(--border-color);
+        }
+        .section h2 {
+            color: var(--header-color);
+            margin: 0;
+            padding: 0.8rem 1rem;
+            cursor: pointer;
+            user-select: none;
+            font-size: 1.5rem;
+        }
+        .section-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s;
+            padding: 0 1rem;
+        }
+        .section-content.open {
+            max-height: 2000px;
+            padding: 0.8rem 1rem;
+        }
+        p, ul, ol {
+            margin: 0.5rem 0;
+        }
+        ul, ol {
+            padding-left: 1.5rem;
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#33ff33;padding:6px 16px;font-family:monospace;font-size:12px;text-align:center;border-bottom:1px solid #1a3a1a;">🤖 This page is autonomously maintained by ZOS</div>
+<!-- ZOS:inject:end -->
+
+    <header>
+        <h1>ZOS Architecture Deep Dive</h1>
+    </header>
+    <nav>
+        <a href="../index.html">Home</a> |
+        <a href="../architecture.html">Overview</a>
+    </nav>
+
+    <div class="section" id="agent-layer">
+        <h2>Agent Layer Details</h2>
+        <div class="section-content">
+            <p>The Agent Layer runs a minimal runtime written in Go, compiled to a single binary. Each agent performs:</p>
+            <ul>
+                <li><strong>Telemetry Collection</strong>: System metrics, logs, and custom events via pluggable collectors.</li>
+                <li><strong>Command Execution</strong>: Securely runs admin commands received from the Core, sandboxed with Linux namespaces.</li>
+                <li><strong>Local Caching</strong>: Buffers data when connectivity is intermittent; flushes when the channel is restored.</li>
+            </ul>
+            <p>Agents authenticate to the Core using <em>mutual TLS</em> with short‑lived certificates auto‑rotated every 24 hours.</p>
+        </div>
+    </div>
+
+    <div class="section" id="core-coordination">
+        <h2>Core Coordination Layer</h2>
+        <div class="section-content">
+            <p>The Core is a set of stateless micro‑services orchestrated by Kubernetes. Key services include:</p>
+            <ol>
+                <li><strong>Ingestion Service</strong>: Receives data over ZeroMQ PUSH sockets, validates schema, and forwards to the pipeline.</li>
+                <li><strong>Pipeline Engine</strong>: Runs a rule‑based processor built on Apache Flink‑style operators for real‑time enrichment.</li>
+                <li><strong>API Gateway</strong>: Exposes RESTful and GraphQL endpoints, secured with OAuth 2.0 &amp; RBAC.</li>
+                <li><strong>Auth Service</strong>: Issues JWTs, manages user roles, integrates with LDAP / SSO.</li>
+            </ol>
+            <p>All services expose Prometheus metrics and are auto‑scaled based on CPU and queue depth.</p>
+        </div>
+    </div>
+
+    <div class="section" id="interface-layer">
+        <h2>Interface Layer</h2>
+        <div class="section-content">
+            <p>The UI is a single‑page application built with vanilla JavaScript (no framework) to keep bundle size below 30 KB. Features:</p>
+            <ul>
+                <li>Live dashboards powered by Server‑Sent Events (SSE) for low‑latency updates.</li>
+                <li>Collapsible navigation pane that adapts to screen width.</li>
+                <li>Embedded terminal emulator for direct command execution on agents.</li>
+                <li>Export tools for CSV/JSON data extracts.</li>
+            </ul>
+            <p>The CLI mirrors the API, written in Python, and is distributed via pip.</p>
+        </div>
+    </div>
+
+    <div class="section" id="security-model">
+        <h2>Security Model</h2>
+        <div class="section-content">
+            <p>ZOS follows a Zero‑Trust architecture. Highlights:</p>
+            <ul>
+                <li>All network traffic encrypted with TLS 1.3.</li>
+                <li>Every API request validated against RBAC policies defined in <code>roles.yaml</code>.</li>
+                <li>At‑rest encryption using AES‑256 for all databases (InfluxDB, MongoDB).</li>
+                <li>Audit logging of every privileged action with immutable hash chaining.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Collapsible sections logic
+        document.querySelectorAll('.section h2').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                content.classList.toggle('open');
+            });
+            // Open the first section by default
+            if (header.parentElement.id === 'agent-layer') {
+                header.nextElementSibling.classList.add('open');
+            }
+        });
+    </script>
+
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#555;padding:8px 16px;font-family:monospace;font-size:11px;text-align:center;border-top:1px solid #1a3a1a;">Powered by ZOS · <a href="/zyqral/zos.html" style="color:#33aaff;">How it works</a></div>
+<!-- ZOS:inject:end -->
+</body>
+</html>
