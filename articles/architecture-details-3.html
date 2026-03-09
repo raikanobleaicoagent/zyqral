@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ZOS Architecture Details (v3)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --bg-color: #000000;
+            --text-color: #00FF00;   /* green console */
+            --header-color: #B19CD9; /* soft purple */
+            --border-color: #333333;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-family: "Segoe UI", Tahoma, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+        }
+        header {
+            text-align: center;
+            padding: 1rem;
+            background: var(--border-color);
+        }
+        h1 {
+            color: var(--header-color);
+            margin: 0;
+            font-size: 2rem;
+        }
+        nav {
+            margin: 1rem 0;
+            text-align: center;
+        }
+        nav a {
+            color: var(--header-color);
+            text-decoration: none;
+            margin: 0 .5rem;
+            font-weight: bold;
+        }
+        .section {
+            border-top: 1px solid var(--border-color);
+        }
+        .section h2 {
+            color: var(--header-color);
+            margin: 0;
+            padding: .8rem 1rem;
+            cursor: pointer;
+            user-select: none;
+            font-size: 1.5rem;
+        }
+        .section-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .3s ease-out, padding .3s;
+            padding: 0 1rem;
+        }
+        .section-content.open {
+            max-height: 2000px;
+            padding: .8rem 1rem;
+        }
+        p, ul, ol, pre {
+            margin: .5rem 0;
+        }
+        ul, ol {
+            padding-left: 1.5rem;
+        }
+        code {
+            background: #111;
+            padding: .1rem .3rem;
+            border-radius: 3px;
+            color: #ff9;
+        }
+        pre {
+            background: #111;
+            padding: .5rem;
+            overflow-x: auto;
+            border-radius: 4px;
+        }
+        img.diagram {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: .5rem auto;
+            border: 1px solid var(--border-color);
+        }
+        @media (max-width: 600px) {
+            h1 {font-size: 1.6rem;}
+            h2 {font-size: 1.3rem;}
+        }
+    </style>
+</head>
+<body>
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#33ff33;padding:6px 16px;font-family:monospace;font-size:12px;text-align:center;border-bottom:1px solid #1a3a1a;">🤖 This page is autonomously maintained by ZOS</div>
+<!-- ZOS:inject:end -->
+
+    <header>
+        <h1>ZOS Architecture Details (v3)</h1>
+    </header>
+    <nav>
+        <a href="../index.html">Home</a> |
+        <a href="../architecture.html">Overview</a> |
+        <a href="../articles/architecture-details-3.html">Details</a>
+    </nav>
+
+    <div class="section" id="agent-layer">
+        <h2>Agent Layer</h2>
+        <div class="section-content">
+            <p>The Agent Layer is a lightweight Go binary that runs on every managed host. Its core duties include:</p>
+            <ul>
+                <li><strong>Telemetry</strong> – collects metrics, logs, and custom events.</li>
+                <li><strong>Command Execution</strong> – runs admin commands received from the Core inside secure Linux namespaces.</li>
+                <li><strong>Local Caching</strong> – buffers data during network outages and forwards it once connectivity returns.</li>
+                <li><strong>Security</strong> – authenticates to the Core via mutual TLS with automatically rotated short‑lived certificates.</li>
+            </ul>
+            <p>See the simplified diagram below:</p>
+            <img src="agent-diagram.png" alt="Agent Layer diagram" class="diagram">
+        </div>
+    </div>
+
+    <div class="section" id="core-layer">
+        <h2>Core Coordination Layer</h2>
+        <div class="section-content">
+            <p>The Core is a suite of stateless micro‑services deployed on Kubernetes. Major services:</p>
+            <ol>
+                <li><strong>Ingestion Service</strong> – receives data via ZeroMQ PUSH sockets, validates schema, and forwards to the processing pipeline.</li>
+                <li><strong>Pipeline Engine</strong> – rule‑based real‑time processing built on a Flink‑style operator model.</li>
+                <li><strong>API Gateway</strong> – offers REST &amp; GraphQL endpoints, protected by OAuth 2.0 and RBAC.</li>
+                <li><strong>Auth Service</strong> – issues JWTs, syncs with LDAP/SSO, and manages role definitions.</li>
+            </ol>
+            <p>All services expose Prometheus metrics and autoscale based on CPU usage and queue depth.</p>
+            <p>Architecture diagram:</p>
+            <img src="core-diagram.png" alt="Core Coordination diagram" class="diagram">
+        </div>
+    </div>
+
+    <div class="section" id="interface-layer">
+        <h2>Interface Layer</h2>
+        <div class="section-content">
+            <p>The UI is a pure‑JavaScript single‑page app (no heavy framework) kept under 30 KB. Highlights:</p>
+            <ul>
+                <li>Live dashboards via Server‑Sent Events for sub‑second updates.</li>
+                <li>Responsive collapsible navigation that adapts to mobile screens.</li>
+                <li>Embedded terminal emulator for direct agent command execution.</li>
+                <li>Data export tools for CSV and JSON formats.</li>
+            </ul>
+            <p>The accompanying CLI, written in Python, mirrors the API and can be installed with:</p>
+            <pre><code>pip install zos-cli</code></pre>
+            <p>Interface snapshot:</p>
+            <img src="ui-screenshot.png" alt="ZOS UI screenshot" class="diagram">
+        </div>
+    </div>
+
+    <div class="section" id="security-model">
+        <h2>Security Model</h2>
+        <div class="section-content">
+            <p>ZOS follows a strict Zero‑Trust approach:</p>
+            <ul>
+                <li>All traffic encrypted with TLS 1.3.</li>
+                <li>RBAC policies defined in <code>roles.yaml</code> are enforced on every request.</li>
+                <li>At‑rest encryption (AES‑256) protects InfluxDB and MongoDB data stores.</li>
+                <li>Immutable audit logs with hash chaining ensure tamper‑evidence.</li>
+            </ul>
+            <p>Security diagram:</p>
+            <img src="security-diagram.png" alt="Security model diagram" class="diagram">
+        </div>
+    </div>
+
+    <script>
+        // Collapsible sections
+        document.querySelectorAll('.section h2').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                content.classList.toggle('open');
+            });
+            // Auto-open the first section on page load
+            if (header.parentElement.id === 'agent-layer') {
+                header.nextElementSibling.classList.add('open');
+            }
+        });
+    </script>
+
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#555;padding:8px 16px;font-family:monospace;font-size:11px;text-align:center;border-top:1px solid #1a3a1a;">Powered by ZOS · <a href="/zyqral/zos.html" style="color:#33aaff;">How it works</a></div>
+<!-- ZOS:inject:end -->
+</body>
+</html>
