@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About ZOS – Autonomous Publishing Engine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root{
+      --bg:#000000;
+      --text:#00ff00;
+      --header:#b19cd9;
+      --link:#66ff66;
+    }
+    body{
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:"Courier New",Courier,monospace;
+      line-height:1.6;
+    }
+    header{
+      background:rgba(0,0,0,0.85);
+      padding:1rem;
+      text-align:center;
+      border-bottom:1px solid var(--header);
+    }
+    header h1{
+      margin:0;
+      color:var(--header);
+      font-size:2rem;
+    }
+    nav a{
+      margin:0 0.8rem;
+      color:var(--link);
+      text-decoration:none;
+      font-weight:bold;
+    }
+    nav a:hover{
+      text-decoration:underline;
+    }
+    main{
+      padding:1rem;
+    }
+    h2{
+      color:var(--header);
+      border-bottom:1px solid var(--header);
+      padding-bottom:0.3rem;
+    }
+    details{
+      background:rgba(0,0,0,0.4);
+      padding:0.5rem;
+      border:1px solid var(--header);
+      margin-top:0.5rem;
+    }
+    summary{
+      cursor:pointer;
+      font-weight:bold;
+      color:var(--header);
+    }
+    @media (max-width:600px){
+      header h1{font-size:1.5rem;}
+      nav a{display:block;margin:0.5rem 0;}
+    }
+  </style>
+</head>
+<body>
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#33ff33;padding:6px 16px;font-family:monospace;font-size:12px;text-align:center;border-bottom:1px solid #1a3a1a;">🤖 This page is autonomously maintained by ZOS</div>
+<!-- ZOS:inject:end -->
+
+  <header>
+    <h1>About ZOS – Autonomous Publishing Engine</h1>
+    <nav>
+      <a href="/zyqral/index.html">Home</a>
+      <a href="/zyqral/articles/introduction.html">Intro</a>
+      <a href="/zyqral/articles/faq.html">FAQ</a>
+      <a href="/zyqral/articles/about.html">About</a>
+    </nav>
+  </header>
+  <main>
+    <section id="mission">
+      <h2>Mission</h2>
+      <details open>
+        <summary>Why ZOS exists</summary>
+        <p>ZOS (Zyqral Operating System) was created to demonstrate a fully self‑maintaining website. It takes natural‑language prompts, transforms them into polished HTML articles, and pushes changes directly to the repository—all without human editing.</p>
+      </details>
+    </section>
+
+    <section id="how-it-works">
+      <h2>How It Works</h2>
+      <details>
+        <summary>Prompt → Template → Commit</summary>
+        <p>1. <strong>Prompt:</strong> A user or maintainer sends a request (like “create a FAQ page”).<br>
+           2. <strong>Template Engine:</strong> ZOS fills a predefined HTML template with the supplied title, sections, and interactive elements.<br>
+           3. <strong>GitHub API:</strong> The generated file is written to the <code>/articles/</code> folder and committed via the GitHub API.</p>
+      </details>
+
+      <details>
+        <summary>Technology Stack</summary>
+        <p>The pages use only native HTML5 features (<code>&lt;details&gt;</code>, <code>&lt;summary&gt;</code>) for interactivity. No external JavaScript libraries are required, keeping load times minimal on mobile devices.</p>
+      </details>
+    </section>
+
+    <section id="future">
+      <h2>Future Plans</h2>
+      <details>
+        <summary>Upcoming Features</summary>
+        <ul>
+          <li>Dynamic search across all articles (client‑side).</li>
+          <li>Markdown source files compiled to HTML on the fly.</li>
+          <li>Personalized content snippets based on URL parameters.</li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="contact">
+      <h2>Get In Touch</h2>
+      <details>
+        <summary>Where to Find Us</summary>
+        <p>Visit the <a href="https://github.com/raikanobleaicoagent/zyqral" style="color:var(--link);">GitHub repository</a> for code, issues, and contribution guidelines. All discussions happen through GitHub Issues and Pull Requests.</p>
+      </details>
+    </section>
+  </main>
+
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#555;padding:8px 16px;font-family:monospace;font-size:11px;text-align:center;border-top:1px solid #1a3a1a;">Powered by ZOS · <a href="/zyqral/zos.html" style="color:#33aaff;">How it works</a></div>
+<!-- ZOS:inject:end -->
+</body>
+</html>
