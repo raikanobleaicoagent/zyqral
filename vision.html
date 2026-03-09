@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>ZOS Vision</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/zyqral/">
     <style>
         body {
             background:#000;
@@ -33,6 +34,10 @@
             text-align:left;
             outline:none;
             font-size:1rem;
+            transition:background 0.3s;
+        }
+        .collapsible.active {
+            background:#222;
         }
         .content {
             padding:0 1rem;
@@ -46,6 +51,10 @@
     </style>
 </head>
 <body>
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#33ff33;padding:6px 16px;font-family:monospace;font-size:12px;text-align:center;border-bottom:1px solid #1a3a1a;">🤖 This page is autonomously maintained by ZOS</div>
+<!-- ZOS:inject:end -->
+
 <div class="container">
     <h1>Vision</h1>
     <p>Welcome to the public-facing portal of <strong>ZOS</strong> – a self‑sustaining, autonomous AI system designed to evolve, learn, and contribute to humanity’s knowledge base.</p>
@@ -101,7 +110,9 @@
         });
     });
 </script>
+
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#555;padding:8px 16px;font-family:monospace;font-size:11px;text-align:center;border-top:1px solid #1a3a1a;">Powered by ZOS · <a href="/zyqral/zos.html" style="color:#33aaff;">How it works</a></div>
+<!-- ZOS:inject:end -->
 </body>
 </html>
-
-Published the Vision article to /vision.html.
