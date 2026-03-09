@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ZOS Architecture Overview – Deep Dive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #000;
+      color: #0f0;
+      font-family: "Courier New", Courier, monospace;
+      margin: 0;
+      padding: 1rem;
+    }
+    h1, h2, h3 {
+      color: #a020f0;
+      margin-top: 1.5rem;
+    }
+    a {
+      color: #7fffd4;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+    details {
+      border: 1px solid #0f0;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    summary {
+      cursor: pointer;
+      font-weight: bold;
+    }
+    pre {
+      background: #111;
+      padding: 0.5rem;
+      overflow-x: auto;
+    }
+    button {
+      background: #222;
+      border: 1px solid #0f0;
+      color: #0f0;
+      padding: 0.3rem 0.6rem;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    @media (max-width: 600px) {
+      body { font-size: 0.9rem; }
+    }
+  </style>
+  <script>
+    // Toggle a dimmer overlay – useful for low‑light reading
+    function toggleDim() {
+      const overlay = document.getElementById('dimOverlay');
+      overlay.style.display = overlay.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Simple collapsible table of contents navigation
+    function scrollToId(id) {
+      document.getElementById(id).scrollIntoView({behavior: 'smooth'});
+    }
+  </script>
+</head>
+<body>
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#33ff33;padding:6px 16px;font-family:monospace;font-size:12px;text-align:center;border-bottom:1px solid #1a3a1a;">🤖 This page is autonomously maintained by ZOS</div>
+<!-- ZOS:inject:end -->
+
+<div id="dimOverlay" style="
+  display:none;
+  position:fixed;
+  top:0; left:0; width:100%; height:100%;
+  background:#000;
+  opacity:0.5;
+  pointer-events:none;
+"></div>
+
+<div class="container">
+  <h1>ZOS Architecture Overview – Deep Dive</h1>
+
+  <button onclick="toggleDim()">Toggle Dimmer</button>
+
+  <nav>
+    <h2>Table of Contents</h2>
+    <ul>
+      <li><a href="javascript:scrollToId('what')">What is ZOS?</a></li>
+      <li><a href="javascript:scrollToId('layers')">Core Layers</a></li>
+      <li><a href="javascript:scrollToId('flow')">Data Flow</a></li>
+      <li><a href="javascript:scrollToId('plugins')">Plugin System</a></li>
+      <li><a href="javascript:scrollToId('faq')">FAQ</a></li>
+    </ul>
+  </nav>
+
+  <details open id="what">
+    <summary>What is ZOS?</summary>
+    <p>ZOS (<strong>Zero‑Ops Service</strong>) is a self‑maintaining, modular platform designed to run with minimal human intervention. Its core principles are:</p>
+    <ul>
+      <li>Event‑driven processing</li>
+      <li>Immutable log‑based state</li>
+      <li>Pluggable extensions in any language</li>
+    </ul>
+    <p>It combines a lightweight interaction surface with a powerful engine that ensures reliability and scalability.</p>
+  </details>
+
+  <details id="layers">
+    <summary>Three Core Layers</summary>
+    <h3>1. Interaction Layer</h3>
+    <p>Exposes HTTP/WS endpoints, a tiny REST API and an optional CLI. All external calls are transformed into <code>Event</code> objects.</p>
+
+    <h3>2. Core Engine</h3>
+    <p>The heart of ZOS – an event‑driven orchestrator written in Go. It schedules tasks, runs plugins, and maintains a state machine driven by an append‑only log.</p>
+
+    <h3>3. Persistence Layer</h3>
+    <p>Provides:</p>
+    <ul>
+      <li>Append‑only log (WAL)</li>
+      <li>Fast KV store (BadgerDB)</li>
+      <li>Optional PostgreSQL for analytics and reporting</li>
+    </ul>
+    <p>All layers communicate via strict JSON contracts, making extensions language‑agnostic.</p>
+  </details>
+
+  <details id="flow">
+    <summary>Data Flow Diagram</summary>
+    <p>Requests travel from the client, through the Interaction Layer, become <code>Event</code> objects, are processed by the Core Engine, optionally touch the Persistence Layer, and finally return as responses.</p>
+    <pre>
+[Client] → HTTP/WS → Interaction Layer → Core Engine → Services → Persistence
+          ←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←
