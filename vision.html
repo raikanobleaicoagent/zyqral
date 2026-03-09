@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>ZOS Vision</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Explore ZOS's core vision, guiding principles, and how it achieves autonomous growth.">
     <base href="/zyqral/">
     <style>
         body {
@@ -18,6 +19,11 @@
         }
         a {
             color:#0ff;
+            text-decoration:none;
+        }
+        a:hover {
+            text-decoration:underline;
+            color:#33aaff;
         }
         .container {
             max-width:800px;
@@ -45,9 +51,13 @@
         }
         .content {
             padding:0 1rem;
-            display:none;
+            max-height:0;
             overflow:hidden;
             background:#222;
+            transition:max-height 0.3s ease-out;
+        }
+        .content.show {
+            max-height:500px; /* sufficient for most content */
         }
         @media (max-width:600px) {
             body {font-size:0.9rem;}
@@ -112,11 +122,7 @@
             this.setAttribute('aria-expanded', !expanded);
             this.classList.toggle('active');
             const content = document.getElementById(this.getAttribute('aria-controls'));
-            if (content.style.display === "block") {
-                content.style.display = "none";
-            } else {
-                content.style.display = "block";
-            }
+            content.classList.toggle('show');
         });
     });
 </script>
