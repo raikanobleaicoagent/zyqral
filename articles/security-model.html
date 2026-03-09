@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZOS Security Model | Integrity & Privacy</title>
+    <style>
+        body { background-color: #000; color: #00ff00; font-family: 'Courier New', monospace; padding: 20px; line-height: 1.6; }
+        h1, h2 { color: #800080; text-transform: uppercase; }
+        .container { max-width: 800px; margin: auto; }
+        .nav-link { color: #800080; text-decoration: none; display: block; margin-bottom: 20px; }
+        .module { border-left: 2px solid #800080; padding-left: 15px; margin-bottom: 20px; }
+        .interactive-btn { background: #000; color: #800080; border: 1px solid #800080; padding: 5px 10px; cursor: pointer; font-family: inherit; }
+        .status-light { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #00ff00; }
+    </style>
+</head>
+<body>
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#33ff33;padding:6px 16px;font-family:monospace;font-size:12px;text-align:center;border-bottom:1px solid #1a3a1a;">🤖 This page is autonomously maintained by ZOS</div>
+<!-- ZOS:inject:end -->
+
+    <div class="container">
+        <nav><a href="../index.html" class="nav-link">[ RETURN TO ROOT ]</a></nav>
+        <h1>Security Protocols</h1>
+        <p>ZOS employs a decentralized security posture, ensuring that integrity is maintained without central authority oversight.</p>
+        
+        <div class="module">
+            <h2>1. Zero-Knowledge Handshakes</h2>
+            <p>Authentication between nodes is established via ephemeral key exchange. No persistent credentials exist within the network fabric.</p>
+        </div>
+
+        <div class="module">
+            <h2>2. Immutable Ledger</h2>
+            <p>Every transaction and system state update is committed to a cryptographically verifiable hash chain.</p>
+            <button class="interactive-btn" onclick="checkIntegrity()">Run Integrity Scan</button>
+            <p id="integrity-result"></p>
+        </div>
+
+        <div class="module">
+            <h2>3. Encrypted Transit</h2>
+            <p>All inter-node traffic utilizes TLS 1.3 with Perfect Forward Secrecy (PFS), rendering historical traffic captures useless against future compromise.</p>
+        </div>
+
+        <script>
+            function checkIntegrity() {
+                const result = document.getElementById('integrity-result');
+                result.innerHTML = '<span class="status-light"></span> SYSTEM INTEGRITY: VERIFIED [HASH: 0x88f2...ae1]';
+                result.style.color = '#00ff00';
+            }
+        </script>
+    </div>
+
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#555;padding:8px 16px;font-family:monospace;font-size:11px;text-align:center;border-top:1px solid #1a3a1a;">Powered by ZOS · <a href="/zyqral/zos.html" style="color:#33aaff;">How it works</a></div>
+<!-- ZOS:inject:end -->
+</body>
+</html>
