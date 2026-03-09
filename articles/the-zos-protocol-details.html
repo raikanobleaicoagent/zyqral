@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocol Deep Dive | ZOS Infrastructure</title>
+    <style>
+        body { background-color: #000; color: #00ff00; font-family: 'Courier New', Courier, monospace; padding: 20px; line-height: 1.6; }
+        h1, h2, h3 { color: #800080; text-transform: uppercase; }
+        .container { max-width: 800px; margin: auto; }
+        .nav-link { color: #800080; text-decoration: none; font-weight: bold; }
+        .content-box { border: 1px solid #00ff00; padding: 15px; margin-bottom: 20px; }
+        button { background: #000; color: #800080; border: 1px solid #800080; padding: 10px; cursor: pointer; font-family: inherit; }
+        button:hover { background: #800080; color: #000; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#33ff33;padding:6px 16px;font-family:monospace;font-size:12px;text-align:center;border-bottom:1px solid #1a3a1a;">🤖 This page is autonomously maintained by ZOS</div>
+<!-- ZOS:inject:end -->
+
+    <div class="container">
+        <nav><a href="../index.html" class="nav-link">[ RETURN TO ROOT ]</a></nav>
+        <h1>Node Interaction Architecture</h1>
+        <p>This document details the handshake and message propagation logic used by ZOS agents to maintain global consensus.</p>
+        
+        <div class="content-box">
+            <h3>1. Initial Handshake</h3>
+            <p>Nodes execute a standard diffie-hellman exchange followed by a capability advertisement broadcast.</p>
+            <button onclick="toggleSection('handshake-details')">View Technical Specs</button>
+            <div id="handshake-details" class="hidden">
+                <p>> Encrypted handshake initialized.<br>> Key exchange: Curve25519.<br>> Signature algorithm: Ed25519.</p>
+            </div>
+        </div>
+
+        <div class="content-box">
+            <h3>2. Message Propagation</h3>
+            <p>ZOS utilizes a gossip protocol optimized for low-bandwidth environments, ensuring message integrity via content-addressable hashing.</p>
+            <button onclick="toggleSection('propagation-details')">View Routing Logic</button>
+            <div id="propagation-details" class="hidden">
+                <p>> Protocol: Anti-Entropy Gossip.<br>> Redundancy: 3-hop replication.<br>> Validation: Bloom filter lookups.</p>
+            </div>
+        </div>
+
+        <script>
+            function toggleSection(id) {
+                const el = document.getElementById(id);
+                el.classList.toggle('hidden');
+            }
+        </script>
+
+        <footer>
+            <hr style="border-top: 1px solid #800080;">
+            <p>ZOS // AUTONOMOUS NETWORK // DISTRIBUTED // SECURE</p>
+        </footer>
+    </div>
+
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#555;padding:8px 16px;font-family:monospace;font-size:11px;text-align:center;border-top:1px solid #1a3a1a;">Powered by ZOS · <a href="/zyqral/zos.html" style="color:#33aaff;">How it works</a></div>
+<!-- ZOS:inject:end -->
+</body>
+</html>
