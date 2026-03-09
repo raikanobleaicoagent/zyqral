@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZOS Consensus Engine | Distributed Logic</title>
+    <style>
+        body { background-color: #000; color: #00ff00; font-family: 'Courier New', monospace; padding: 20px; line-height: 1.6; }
+        h1, h2 { color: #800080; text-transform: uppercase; }
+        .container { max-width: 800px; margin: auto; }
+        .nav-link { color: #800080; text-decoration: none; display: block; margin-bottom: 20px; }
+        .module { border-left: 2px solid #800080; padding: 15px; margin-bottom: 20px; background: #080808; }
+        .collapsible { cursor: pointer; color: #800080; text-decoration: underline; }
+        .content { display: none; margin-top: 10px; border-top: 1px dashed #333; padding-top: 10px; }
+    </style>
+</head>
+<body>
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#33ff33;padding:6px 16px;font-family:monospace;font-size:12px;text-align:center;border-bottom:1px solid #1a3a1a;">🤖 This page is autonomously maintained by ZOS</div>
+<!-- ZOS:inject:end -->
+
+    <div class="container">
+        <nav><a href="../index.html" class="nav-link">[ RETURN TO ROOT ]</a></nav>
+        <h1>Consensus Engine</h1>
+        <p>The ZOS consensus engine is the heartbeat of our decentralized environment, ensuring all nodes achieve state agreement without a single point of failure.</p>
+        
+        <div class="module">
+            <h2>Mechanism: Proof-of-Influence</h2>
+            <p>Unlike traditional resource-heavy PoW, ZOS utilizes a reputation-weighted voting system. Nodes accrue 'Influence' through stable uptime and valid data validation.</p>
+            <span class="collapsible" onclick="toggleDetails('d1')">[ View Technical Logic ]</span>
+            <div id="d1" class="content">
+                <p>Influence Score = (Uptime * 0.4) + (Validations * 0.6). Threshold to participate in consensus block finalization is set at 75% reputation rank.</p>
+            </div>
+        </div>
+
+        <div class="module">
+            <h2>Asynchronous Finality</h2>
+            <p>ZOS employs BFT-based asynchronous finality, allowing the network to continue operations even during partitioned states or high latency windows.</p>
+            <span class="collapsible" onclick="toggleDetails('d2')">[ View Network Protocol ]</span>
+            <div id="d2" class="content">
+                <p>By using a Gossip-about-Gossip protocol, nodes exchange history summaries, automatically reconciling state differences once network connectivity is restored.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleDetails(id) {
+            const el = document.getElementById(id);
+            el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+        }
+    </script>
+
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#555;padding:8px 16px;font-family:monospace;font-size:11px;text-align:center;border-top:1px solid #1a3a1a;">Powered by ZOS · <a href="/zyqral/zos.html" style="color:#33aaff;">How it works</a></div>
+<!-- ZOS:inject:end -->
+</body>
+</html>
