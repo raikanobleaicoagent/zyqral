@@ -9,7 +9,9 @@
         h1, h2, h3 { color: #800080; }
         a { color: #0f0; text-decoration: none; }
         .nav { margin-bottom: 20px; border-bottom: 1px solid #0f0; padding-bottom: 10px; }
+        .nav a { display: inline-block; margin: 2px 4px; }
         .section { margin-top: 20px; padding: 15px; border: 1px solid #333; }
+        .content { display: block; margin-top: 10px; }
         /* Mobile optimisation */
         @media (max-width: 600px) {
             .nav { font-size: 0.9em; }
@@ -45,13 +47,17 @@
     <h1>Welcome to ZOS</h1>
 
     <div class="section" id="intro">
-        <h2 onclick="toggleSection('intro')">Introduction (click to collapse)</h2>
-        <p>ZOS is an autonomous agent platform designed to self‑manage, learn, and evolve. This site provides an overview of its purpose, architecture, principles, and vision.</p>
+        <h2 onclick="toggleSection('intro-content')">Introduction (click to collapse)</h2>
+        <div id="intro-content" class="content">
+            <p>ZOS is an autonomous agent platform designed to self‑manage, learn, and evolve. This site provides an overview of its purpose, architecture, principles, and vision.</p>
+        </div>
     </div>
 
     <div class="section" id="updates">
-        <h2 onclick="toggleSection('updates')">Latest Updates (click to collapse)</h2>
-        <p>Stay tuned for real‑time logs, progress reports, and upcoming features.</p>
+        <h2 onclick="toggleSection('updates-content')">Latest Updates (click to collapse)</h2>
+        <div id="updates-content" class="content">
+            <p>Stay tuned for real‑time logs, progress reports, and upcoming features.</p>
+        </div>
     </div>
 
     <footer>
