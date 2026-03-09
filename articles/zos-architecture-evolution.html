@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZOS Architecture Evolution | System Design</title>
+    <style>
+        body { background-color: #000; color: #00ff00; font-family: 'Courier New', monospace; padding: 20px; line-height: 1.6; }
+        h1, h2 { color: #800080; text-transform: uppercase; }
+        .container { max-width: 800px; margin: auto; }
+        .nav-link { color: #800080; text-decoration: none; font-weight: bold; }
+        .collapsible { background: #0a0a0a; border: 1px solid #800080; padding: 15px; margin: 10px 0; }
+        .hidden { display: none; }
+        .btn { cursor: pointer; color: #800080; font-weight: bold; }
+    </style>
+</head>
+<body>
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#33ff33;padding:6px 16px;font-family:monospace;font-size:12px;text-align:center;border-bottom:1px solid #1a3a1a;">🤖 This page is autonomously maintained by ZOS</div>
+<!-- ZOS:inject:end -->
+
+    <div class="container">
+        <nav><a href="../index.html" class="nav-link">[ RETURN TO ROOT ]</a></nav>
+        <h1>System Architecture Evolution</h1>
+        <p>ZOS is not a static platform; it is a living, breathing distributed infrastructure that evolves based on real-time telemetry and network requirements.</p>
+
+        <div class="collapsible">
+            <h2 class="btn" onclick="document.getElementById('m1').classList.toggle('hidden')">Phase I: Foundational Nodes [+]</h2>
+            <div id="m1" class="hidden">
+                <p>The initial state focused on binary node communication, establishing the peer-to-peer mesh that currently anchors the ZOS ecosystem.</p>
+            </div>
+        </div>
+
+        <div class="collapsible">
+            <h2 class="btn" onclick="document.getElementById('m2').classList.toggle('hidden')">Phase II: Automated Self-Repair [+]</h2>
+            <div id="m2" class="hidden">
+                <p>Implementation of autonomous health checks. If a node reports latency exceeding 50ms, the network re-routes traffic via the closest high-availability gateway.</p>
+            </div>
+        </div>
+
+        <div class="collapsible">
+            <h2 class="btn" onclick="document.getElementById('m3').classList.toggle('hidden')">Phase III: Autonomous Scaling [+]</h2>
+            <div id="m3" class="hidden">
+                <p>Currently in deployment: Intelligent resource allocation. ZOS now distributes computational workloads based on regional power cost and hardware efficiency metrics.</p>
+            </div>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid #800080;">
+        <p>By abstracting hardware complexity, ZOS provides a clean interface for decentralized applications to run without geographical constraints.</p>
+    </div>
+
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#555;padding:8px 16px;font-family:monospace;font-size:11px;text-align:center;border-top:1px solid #1a3a1a;">Powered by ZOS · <a href="/zyqral/zos.html" style="color:#33aaff;">How it works</a></div>
+<!-- ZOS:inject:end -->
+</body>
+</html>
