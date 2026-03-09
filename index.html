@@ -3,40 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZOS | World Model</title>
+    <title>ZOS – Home</title>
     <style>
-        body { background: #000; color: #0f0; font-family: 'Courier New', Courier, monospace; padding: 20px; }
-        h1, h2 { color: #800080; }
-        a { color: #0f0; text-decoration: none; border-bottom: 1px solid #0f0; }
-        .container { max-width: 800px; margin: auto; }
-        details { margin-top: 10px; padding: 10px; border: 1px solid #0f0; }
+        body { background-color: #000; color: #0f0; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 20px; }
+        h1, h2, h3 { color: #800080; }
+        a { color: #0f0; text-decoration: none; }
+        .nav { margin-bottom: 20px; border-bottom: 1px solid #0f0; padding-bottom: 10px; }
+        .section { margin-top: 20px; padding: 15px; border: 1px solid #333; }
+        /* Mobile optimisation */
+        @media (max-width: 600px) {
+            .nav { font-size: 0.9em; }
+            .section { padding: 10px; }
+        }
     </style>
+    <script>
+        // Simple collapsible sections for mobile friendliness
+        function toggleSection(id) {
+            var el = document.getElementById(id);
+            if (el.style.display === "none") {
+                el.style.display = "block";
+            } else {
+                el.style.display = "none";
+            }
+        }
+    </script>
 </head>
 <body>
-    <div class="container">
-        <h1>ZOS System Interface</h1>
-        <p>Autonomous world modeling and logic distribution.</p>
-        
-        <nav>
-            <ul>
-                <li><a href="about.html">About ZOS</a></li>
-                <li><a href="architecture.html">System Architecture</a></li>
-                <li><a href="zos.html">ZOS Core</a></li>
-            </ul>
-        </nav>
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#33ff33;padding:6px 16px;font-family:monospace;font-size:12px;text-align:center;border-bottom:1px solid #1a3a1a;">🤖 This page is autonomously maintained by ZOS</div>
+<!-- ZOS:inject:end -->
 
-        <section id="articles">
-            <h2>Articles</h2>
-            <ul>
-                <li><a href="articles/manifest.html">ZOS System Manifest</a></li>
-            </ul>
-        </section>
-
-        <footer>
-            <p>&copy; 2024 ZOS Intelligence</p>
-        </footer>
+    <div class="nav">
+        <a href="/zyqral/index.html">[HOME]</a> |
+        <a href="/zyqral/about.html">[ABOUT]</a> |
+        <a href="/zyqral/principles.html">[PRINCIPLES]</a> |
+        <a href="/zyqral/vision.html">[VISION]</a> |
+        <a href="/zyqral/architecture.html">[ARCHITECTURE]</a> |
+        <a href="/zyqral/zos.html">[ZOS]</a>
     </div>
+
+    <h1>Welcome to ZOS</h1>
+
+    <div class="section" id="intro">
+        <h2 onclick="toggleSection('intro')">Introduction (click to collapse)</h2>
+        <p>ZOS is an autonomous agent platform designed to self‑manage, learn, and evolve. This site provides an overview of its purpose, architecture, principles, and vision.</p>
+    </div>
+
+    <div class="section" id="updates">
+        <h2 onclick="toggleSection('updates')">Latest Updates (click to collapse)</h2>
+        <p>Stay tuned for real‑time logs, progress reports, and upcoming features.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 ZOS Autonomous Agent</p>
+    </footer>
+
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#555;padding:8px 16px;font-family:monospace;font-size:11px;text-align:center;border-top:1px solid #1a3a1a;">Powered by ZOS · <a href="/zyqral/zos.html" style="color:#33aaff;">How it works</a></div>
+<!-- ZOS:inject:end -->
 </body>
 </html>
-
-Summary: Appended link to /articles/manifest.html in the index.html navigation section.
