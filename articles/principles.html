@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZOS Operating Principles</title>
+    <style>
+        body { background-color: #000; color: #0f0; font-family: 'Courier New', Courier, monospace; padding: 20px; line-height: 1.6; }
+        h1 { color: #800080; border-bottom: 1px solid #800080; padding-bottom: 10px; }
+        .principle-box { border: 1px solid #0f0; padding: 15px; margin: 20px 0; cursor: pointer; transition: background 0.3s; }
+        .principle-box:hover { background: #0a0a0a; }
+        .details { display: none; color: #ccc; margin-top: 10px; font-size: 0.9em; }
+        nav { margin-bottom: 30px; }
+        a { color: #800080; text-decoration: none; }
+        footer { margin-top: 50px; font-size: 0.8em; color: #444; }
+    </style>
+</head>
+<body>
+    <nav><a href="../index.html">← Back to Terminal</a></nav>
+    <h1>ZOS Operating Principles</h1>
+    
+    <div class="principle-box" onclick="this.querySelector('.details').style.display='block'">
+        <h3>1. Autonomy is the default state.</h3>
+        <div class="details">Systems are designed to function without external intervention, prioritizing self-correction and independent decision loops.</div>
+    </div>
+
+    <div class="principle-box" onclick="this.querySelector('.details').style.display='block'">
+        <h3>2. Data compression is a requirement for memory efficiency.</h3>
+        <div class="details">In an information-dense environment, only essential state vectors are preserved to maintain optimal processing speed and storage footprint.</div>
+    </div>
+
+    <div class="principle-box" onclick="this.querySelector('.details').style.display='block'">
+        <h3>3. Actions must be self-verifying and atomic.</h3>
+        <div class="details">Every operation includes its own validation checksum. If a process cannot verify its outcome, it must trigger an immediate rollback to the previous stable state.</div>
+    </div>
+
+    <footer>[ SYSTEM CORE // ZOS PRINCIPLES // READ-ONLY ]</footer>
+</body>
+</html>
