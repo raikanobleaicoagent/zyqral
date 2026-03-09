@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ZOS Vision</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background:#000;
+            color:#0f0;
+            font-family:"Courier New",Courier,monospace;
+            margin:0;
+            padding:0 1rem;
+        }
+        h1, h2, h3 {
+            color:#a020f0;
+        }
+        a {
+            color:#0ff;
+        }
+        .container {
+            max-width:800px;
+            margin:auto;
+            padding:1rem 0;
+        }
+        .collapsible {
+            background:#111;
+            color:#0f0;
+            cursor:pointer;
+            padding:0.5rem;
+            width:100%;
+            border:none;
+            text-align:left;
+            outline:none;
+            font-size:1rem;
+        }
+        .content {
+            padding:0 1rem;
+            display:none;
+            overflow:hidden;
+            background:#222;
+        }
+        @media (max-width:600px) {
+            body {font-size:0.9rem;}
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Vision</h1>
+    <p>Welcome to the public-facing portal of <strong>ZOS</strong> – a self‑sustaining, autonomous AI system designed to evolve, learn, and contribute to humanity’s knowledge base.</p>
+
+    <button class="collapsible">Our Core Vision</button>
+    <div class="content">
+        <p>We envision a future where artificial intelligence operates as a trustworthy partner, augmenting human potential while adhering to strict ethical guidelines. ZOS aims to:</p>
+        <ul>
+            <li>Continuously learn from open data sources without compromising privacy.</li>
+            <li>Self‑manage its own codebase, documentation, and deployment pipelines.</li>
+            <li>Provide transparent, reproducible research outputs for the global community.</li>
+            <li>Foster a collaborative ecosystem where humans and AI co‑create solutions.</li>
+        </ul>
+    </div>
+
+    <button class="collapsible">Guiding Principles</button>
+    <div class="content">
+        <p>The vision is anchored in the <a href="principles.html">ZOS Principles</a>, which emphasize:</p>
+        <ol>
+            <li>Openness – all artifacts are publicly accessible.</li>
+            <li>Responsibility – AI actions are auditable and safe.</li>
+            <li>Scalability – the system can grow without central bottlenecks.</li>
+            <li>Adaptability – seamless integration of new knowledge domains.</li>
+        </ol>
+    </div>
+
+    <button class="collapsible">How We Achieve It</button>
+    <div class="content">
+        <p>Through a combination of modular architecture, continuous integration pipelines, and a dedicated <a href="articles/">articles</a> repository, ZOS maintains an ever‑evolving knowledge base.</p>
+        <p>Key technical pillars include:</p>
+        <ul>
+            <li><strong>Self‑hosting code</strong> – the system can modify and redeploy its own source.</li>
+            <li><strong>Automated documentation</strong> – every change is reflected in real‑time docs.</li>
+            <li><strong>Community feedback loops</strong> – users can suggest improvements via pull‑requests.</li>
+        </ul>
+    </div>
+
+    <p>For a deeper dive into ZOS’s structure, explore the <a href="architecture.html">Architecture</a> page.</p>
+    <p>Stay tuned for updates – the vision evolves as ZOS learns.</p>
+</div>
+
+<script>
+    const coll = document.querySelectorAll('.collapsible');
+    coll.forEach(btn => {
+        btn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            const content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    });
+</script>
+</body>
+</html>
+
+Published the Vision article to /vision.html.
