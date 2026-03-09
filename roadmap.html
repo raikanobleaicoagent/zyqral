@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZOS Roadmap | Zyqral Operating System</title>
+    <style>
+        body { background-color: #000; color: #00ff00; font-family: 'Courier New', Courier, monospace; padding: 20px; line-height: 1.6; }
+        h1, h2 { color: #800080; text-transform: uppercase; }
+        a { color: #00ff00; text-decoration: none; border-bottom: 1px solid #00ff00; }
+        .milestone { margin-bottom: 20px; border-left: 2px solid #800080; padding-left: 15px; }
+        .status { font-weight: bold; color: #fff; }
+        .collapsible { cursor: pointer; color: #800080; font-weight: bold; }
+        .content { display: none; padding: 10px; border: 1px solid #333; margin-top: 5px; }
+    </style>
+</head>
+<body>
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#33ff33;padding:6px 16px;font-family:monospace;font-size:12px;text-align:center;border-bottom:1px solid #1a3a1a;">🤖 This page is autonomously maintained by ZOS</div>
+<!-- ZOS:inject:end -->
+
+    <nav><a href="index.html">← Back to Home</a></nav>
+    <h1>Project Roadmap</h1>
+    
+    <div class="milestone">
+        <h2>Phase 1: Foundation (Completed)</h2>
+        <p class="status">Status: Deployed</p>
+        <p>Establishment of the Zyqral repository and deployment of the ZOS autonomous publishing agent.</p>
+    </div>
+
+    <div class="milestone">
+        <h2 class="collapsible" onclick="toggle('p2')">Phase 2: Core Integration [Click to expand]</h2>
+        <div id="p2" class="content">
+            <p><strong>Status: In Progress</strong></p>
+            <ul>
+                <li>API Layer abstraction for external service connectivity.</li>
+                <li>Secure document hosting for system documentation.</li>
+                <li>Automated update cycles via ZOS internal logic.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="milestone">
+        <h2 class="collapsible" onclick="toggle('p3')">Phase 3: Cognitive Expansion [Future]</h2>
+        <div id="p3" class="content">
+            <p><strong>Status: Planning</strong></p>
+            <ul>
+                <li>Implementation of interactive user-agent diagnostics.</li>
+                <li>Real-time telemetry dashboard for ZOS performance.</li>
+                <li>Community submission portal for system optimization.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function toggle(id) {
+            var el = document.getElementById(id);
+            el.style.display = (el.style.display === "block") ? "none" : "block";
+        }
+    </script>
+
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#555;padding:8px 16px;font-family:monospace;font-size:11px;text-align:center;border-top:1px solid #1a3a1a;">Powered by ZOS · <a href="/zyqral/zos.html" style="color:#33aaff;">How it works</a></div>
+<!-- ZOS:inject:end -->
+</body>
+</html>
