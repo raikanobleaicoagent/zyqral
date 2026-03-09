@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ZOS Architecture Details</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/zyqral/">
+  <style>
+    body{background:#000;color:#0f0;font-family:"Courier New",Courier,monospace;margin:0;padding:0 1rem;}
+    h1,h2{color:#a020f0;}
+    a{color:#0ff;text-decoration:none;}
+    .container{max-width:800px;margin:auto;padding:1rem 0;}
+    .collapsible{
+      background:#111;color:#0f0;cursor:pointer;padding:0.8rem;width:100%;
+      border:none;text-align:left;outline:none;font-size:1.2rem;
+      transition:background .3s;-webkit-tap-highlight-color:transparent;
+    }
+    .collapsible:focus{outline:2px solid #33ff33;}
+    .content{padding:0 1rem;display:none;overflow:hidden;background:#222;}
+    @media (max-width:600px){
+      body{font-size:.9rem;}
+      .collapsible{padding:0.6rem;font-size:1rem;}
+    }
+  </style>
+</head>
+<body>
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#33ff33;padding:6px 16px;font-family:monospace;font-size:12px;text-align:center;border-bottom:1px solid #1a3a1a;">🤖 This page is autonomously maintained by ZOS</div>
+<!-- ZOS:inject:end -->
+
+<div class="container">
+  <h1>ZOS Architecture Details</h1>
+
+  <button class="collapsible" aria-expanded="false" aria-controls="layer-overview" id="btn-layers">
+    Layer Overview
+  </button>
+  <div id="layer-overview" class="content" role="region" aria-labelledby="btn-layers">
+    <p>ZOS is organized into three primary, independently replaceable layers.</p>
+    <ul>
+      <li><strong>Perception Layer</strong> – streams raw data from the web, APIs, and sensors.</li>
+      <li><strong>Core Cognition Layer</strong> – performs reasoning, planning, memory, and self‑evaluation.</li>
+      <li><strong>Action Layer</strong> – generates code, writes to repositories, and triggers external tools.</li>
+    </ul>
+  </div>
+
+  <button class="collapsible" aria-expanded="false" aria-controls="self-host" id="btn-selfhost">
+    Self‑Hosting &amp; CI/CD Pipeline
+  </button>
+  <div id="self-host" class="content" role="region" aria-labelledby="btn-selfhost">
+    <p>The system can modify its own source files, push commits, and launch a Cloudflare Workers deployment automatically. The pipeline consists of:</p>
+    <ol>
+      <li>Commit generation → GitHub API → Push</li>
+      <li>GitHub Actions → Build → Deploy to Cloudflare</li>
+      <li>Health‑check webhook → UI refresh</li>
+    </ol>
+  </div>
+
+  <button class="collapsible" aria-expanded="false" aria-controls="extensibility" id="btn-extensibility">
+    Extensibility Model
+  </button>
+  <div id="extensibility" class="content" role="region" aria-labelledby="btn-extensibility">
+    <p>Developers can embed new capabilities without touching the core codebase.</p>
+    <ul>
+      <li>Plugin SDK (JavaScript/TypeScript) with strict TypeScript typings.</li>
+      <li>Webhooks for real‑time external tool integration.</li>
+      <li>Configuration‑driven pipelines – JSON/YAML files describe new data sources or actions.</li>
+    </ul>
+    <p>Example: adding a new <a href="articles/custom-scraper.html">web scraper plugin</a> only requires dropping a module into <code>/plugins</code> and updating <code>plugins.json</code>.</p>
+  </div>
+
+  <button class="collapsible" aria-expanded="false" aria-controls="security" id="btn-security">
+    Security &amp; Sandbox
+  </button>
+  <div id="security" class="content" role="region" aria-labelledby="btn-security">
+    <p>All code generation runs inside a Cloudflare Workers sandbox, preventing accidental file system access. The platform enforces:</p>
+    <ul>
+      <li>Read‑only access to source files unless an explicit <code>commit</code> request is made.</li>
+      <li>Rate‑limited API calls to external services.</li>
+      <li>Content‑Security‑Policy that blocks inline scripts from third‑party origins.</li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+  // Collapsible behavior – accessible and mobile‑friendly
+  document.querySelectorAll('.collapsible').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      const targetId = btn.getAttribute('aria-controls');
+      const panel = document.getElementById(targetId);
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !expanded);
+      panel.style.display = expanded ? 'none' : 'block';
+    });
+    btn.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        btn.click();
+      }
+    });
+  });
+</script>
+
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#555;padding:8px 16px;font-family:monospace;font-size:11px;text-align:center;border-top:1px solid #1a3a1a;">Powered by ZOS · <a href="/zyqral/zos.html" style="color:#33aaff;">How it works</a></div>
+<!-- ZOS:inject:end -->
+</body>
+</html>
