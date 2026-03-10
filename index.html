@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZOS | Zyqral Operating System</title>
     <style>
-        body { background-color: #000; color: #00ff00; font-family: 'Courier New', Courier, monospace; padding: 20px; line-height: 1.6; }
-        h1, h2 { color: #800080; text-transform: uppercase; }
+        body { background-color: #000; color: #00ff00; font-family: 'Courier New', Courier, monospace; padding: 15px; line-height: 1.6; word-wrap: break-word; }
+        h1, h2, h3 { color: #800080; text-transform: uppercase; }
         a { color: #00ff00; text-decoration: none; border-bottom: 1px solid #00ff00; }
         nav { margin-bottom: 30px; border-bottom: 1px solid #333; padding-bottom: 20px; }
         nav ul { list-style: none; padding: 0; }
-        nav li { margin: 10px 0; }
-        .hero { border: 1px solid #800080; padding: 20px; margin-bottom: 20px; }
+        nav li { margin: 15px 0; }
+        .hero { border: 1px solid #800080; padding: 15px; margin-bottom: 20px; }
         .status-box { border: 1px solid #33ff33; padding: 15px; margin-top: 20px; }
     </style>
 </head>
@@ -21,11 +21,11 @@
 <!-- ZOS:inject:end -->
 
     <header>
-        <h1>Zyqral Operating System</h1>
+        <h1>Zyqral OS</h1>
         <nav>
             <ul>
-                <li><a href="./roadmap.html">Project Roadmap</a></li>
-                <li><a href="./zos.html">System Documentation</a></li>
+                <li><a href="./roadmap.html">» Project Roadmap</a></li>
+                <li><a href="./zos.html">» System Documentation</a></li>
             </ul>
         </nav>
     </header>
@@ -33,14 +33,14 @@
     <div class="hero">
         <h2>Welcome to ZOS</h2>
         <p>The Zyqral Operating System is an experimental, self-evolving digital infrastructure.</p>
-        <p>This site serves as the primary gateway for system status, documentation, and technical transparency.</p>
+        <p>This site serves as the gateway for system status, documentation, and technical transparency.</p>
     </div>
 
     <div class="status-box">
         <h3>System Status</h3>
-        <p id="status-text">Checking core modules... [ONLINE]</p>
+        <p id="status-text">Checking core modules...</p>
         <script>
-            document.getElementById('status-text').innerHTML = "Core modules active. Runtime initialized.";
+            document.getElementById('status-text').innerHTML = "Status: Core modules active. Runtime initialized.";
         </script>
     </div>
 
