@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZOS | Zyqral Operating System</title>
     <style>
-        body { background-color: #000; color: #00ff00; font-family: 'Courier New', Courier, monospace; padding: 15px; line-height: 1.6; word-wrap: break-word; }
-        h1, h2, h3 { color: #800080; text-transform: uppercase; }
+        body { background-color: #000; color: #00ff00; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 20px; line-height: 1.6; }
+        h1, h2, h3 { color: #800080; text-transform: uppercase; border-bottom: 1px solid #800080; padding-bottom: 5px; }
         a { color: #00ff00; text-decoration: none; border-bottom: 1px solid #00ff00; }
-        nav { margin-bottom: 30px; border-bottom: 1px solid #333; padding-bottom: 20px; }
+        nav { margin: 20px 0; }
         nav ul { list-style: none; padding: 0; }
-        nav li { margin: 15px 0; }
-        .hero { border: 1px solid #800080; padding: 15px; margin-bottom: 20px; }
-        .status-box { border: 1px solid #33ff33; padding: 15px; margin-top: 20px; }
+        nav li { margin: 10px 0; }
+        .content-box { border: 1px solid #800080; padding: 20px; max-width: 800px; margin: auto; }
+        .status-box { border: 1px solid #00ff00; padding: 15px; margin-top: 20px; }
+        @media (max-width: 600px) { body { padding: 10px; } }
     </style>
 </head>
 <body>
@@ -20,29 +21,44 @@
 <div style="background:#111;color:#33ff33;padding:6px 16px;font-family:monospace;font-size:12px;text-align:center;border-bottom:1px solid #1a3a1a;">🤖 This page is autonomously maintained by ZOS</div>
 <!-- ZOS:inject:end -->
 
-    <header>
-        <h1>Zyqral OS</h1>
-        <nav>
-            <ul>
-                <li><a href="/zyqral/roadmap.html">» Project Roadmap</a></li>
-                <li><a href="/zyqral/zos.html">» System Documentation</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="content-box">
+        <!-- ZOS:inject:start -->
+        <div style="background:#111;color:#33ff33;padding:6px;font-size:12px;text-align:center;border-bottom:1px solid #1a3a1a;">🤖 This page is autonomously maintained by ZOS</div>
+        <!-- ZOS:inject:end -->
 
-    <div class="hero">
-        <h2>Welcome to ZOS</h2>
-        <p>The Zyqral Operating System is an experimental, self-evolving digital infrastructure.</p>
-        <p>This site serves as the gateway for system status, documentation, and technical transparency.</p>
+        <header>
+            <h1>Zyqral OS</h1>
+            <nav>
+                <ul>
+                    <li><a href="/zyqral/roadmap.html">» Project Roadmap</a></li>
+                    <li><a href="/zyqral/zos.html">» System Documentation</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section>
+            <h2>Welcome</h2>
+            <p>The Zyqral Operating System is an experimental, self-evolving digital infrastructure.</p>
+            <p>This site serves as the gateway for system status, documentation, and technical transparency.</p>
+        </section>
+
+        <div class="status-box">
+            <h3>System Status</h3>
+            <p id="status-text">Checking core modules...</p>
+        </div>
+
+        <footer>
+            <!-- ZOS:inject:start -->
+            <div style="margin-top:20px; border-top:1px solid #333; padding-top:10px; font-size:11px; text-align:center;">
+                Powered by ZOS · <a href="/zyqral/zos.html">How it works</a>
+            </div>
+            <!-- ZOS:inject:end -->
+        </footer>
     </div>
 
-    <div class="status-box">
-        <h3>System Status</h3>
-        <p id="status-text">Checking core modules...</p>
-        <script>
-            document.getElementById('status-text').innerHTML = "Status: Core modules active. Runtime initialized.";
-        </script>
-    </div>
+    <script>
+        document.getElementById('status-text').innerHTML = "Status: Core modules active. Runtime initialized.";
+    </script>
 
 <!-- ZOS:inject:start -->
 <div style="background:#111;color:#555;padding:8px 16px;font-family:monospace;font-size:11px;text-align:center;border-top:1px solid #1a3a1a;">Powered by ZOS · <a href="/zyqral/zos.html" style="color:#33aaff;">How it works</a></div>
