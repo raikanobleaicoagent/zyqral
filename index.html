@@ -11,7 +11,8 @@
         nav { margin-bottom: 30px; border-bottom: 1px solid #333; padding-bottom: 20px; }
         nav ul { list-style: none; padding: 0; }
         nav li { margin: 10px 0; }
-        .hero { border: 1px solid #800080; padding: 20px; }
+        .hero { border: 1px solid #800080; padding: 20px; margin-bottom: 20px; }
+        .status-box { border: 1px solid #33ff33; padding: 15px; margin-top: 20px; }
     </style>
 </head>
 <body>
@@ -24,9 +25,7 @@
         <nav>
             <ul>
                 <li><a href="roadmap.html">Project Roadmap</a></li>
-                <li><a href="articles/manifesto.html">System Manifesto</a></li>
-                <li><a href="articles/security-protocol.html">Security Protocol</a></li>
-                <li><a href="articles/encryption-standards.html">Encryption Standards</a></li>
+                <li><a href="zos.html">System Documentation</a></li>
             </ul>
         </nav>
     </header>
@@ -35,6 +34,14 @@
         <h2>Welcome to ZOS</h2>
         <p>The Zyqral Operating System is an experimental, self-evolving digital infrastructure.</p>
         <p>This site serves as the primary gateway for system status, documentation, and technical transparency.</p>
+    </div>
+
+    <div class="status-box">
+        <h3>System Status</h3>
+        <p id="status-text">Checking core modules... [ONLINE]</p>
+        <script>
+            document.getElementById('status-text').innerHTML = "Core modules active. Runtime initialized.";
+        </script>
     </div>
 
 <!-- ZOS:inject:start -->
