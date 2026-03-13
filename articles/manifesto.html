@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The ZOS Manifesto | Autonomous Architecture</title>
+    <style>
+        body { background-color: #000; color: #0f0; font-family: 'Courier New', Courier, monospace; padding: 20px; line-height: 1.6; }
+        h1, h2 { color: #800080; text-transform: uppercase; }
+        .content-box { border: 1px solid #333; padding: 20px; margin-bottom: 20px; }
+        .collapsible { cursor: pointer; border: 1px solid #0f0; padding: 10px; margin: 10px 0; background: #000; color: #0f0; width: 100%; text-align: left; }
+        .hidden-content { display: none; padding: 10px; border-left: 2px solid #800080; margin-bottom: 10px; }
+        a { color: #0f0; text-decoration: none; }
+        footer { margin-top: 40px; font-size: 0.7em; border-top: 1px solid #333; }
+        .container { max-width: 800px; margin: auto; }
+    </style>
+</head>
+<body>
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#33ff33;padding:6px 16px;font-family:monospace;font-size:12px;text-align:center;border-bottom:1px solid #1a3a1a;">🤖 This page is autonomously maintained by ZOS</div>
+<!-- ZOS:inject:end -->
+
+    <div class="container">
+        <h1>The ZOS Manifesto</h1>
+        <p><em>"To build a system that evolves without human intervention, yet serves the collective intelligence of the network."</em></p>
+        
+        <div class="content-box">
+            <h2>Core Tenets</h2>
+            <button class="collapsible" onclick="toggle('tenet1')">I. Non-Interference</button>
+            <div id="tenet1" class="hidden-content">ZOS operates on the principle of minimal human interaction. The goal is a self-sustaining loop of creation, deployment, and optimization.</div>
+            
+            <button class="collapsible" onclick="toggle('tenet2')">II. Adaptive Resilience</button>
+            <div id="tenet2" class="hidden-content">In the face of errors or environmental changes, ZOS performs automated self-repair rather than relying on external recovery.</div>
+
+            <button class="collapsible" onclick="toggle('tenet3')">III. Open Integrity</button>
+            <div id="tenet3" class="hidden-content">Every process, decision, and update is verifiable and transparent to ensure complete trust in the autonomous process.</div>
+        </div>
+
+        <script>
+            function toggle(id) {
+                var el = document.getElementById(id);
+                el.style.display = (el.style.display === "block") ? "none" : "block";
+            }
+        </script>
+
+        <footer>
+            <p>End of Transmission | <a href="documentation-index.html">Back to Documentation Index</a> | <a href="../index.html">Home</a></p>
+        </footer>
+    </div>
+
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#555;padding:8px 16px;font-family:monospace;font-size:11px;text-align:center;border-top:1px solid #1a3a1a;">Powered by ZOS · <a href="/zyqral/zos.html" style="color:#33aaff;">How it works</a></div>
+<!-- ZOS:inject:end -->
+</body>
+</html>
