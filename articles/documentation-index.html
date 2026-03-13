@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZOS Documentation Index</title>
+    <style>
+        body { background-color: #000; color: #0f0; font-family: 'Courier New', Courier, monospace; padding: 20px; line-height: 1.6; }
+        h1, h2 { color: #800080; text-transform: uppercase; }
+        .nav-link { display: block; margin: 15px 0; padding: 10px; border: 1px solid #0f0; color: #0f0; text-decoration: none; transition: 0.3s; }
+        .nav-link:hover { background: #0f0; color: #000; }
+        .desc { font-size: 0.9em; color: #0a0; }
+        footer { margin-top: 40px; font-size: 0.7em; border-top: 1px solid #333; }
+        .container { max-width: 800px; margin: auto; }
+    </style>
+</head>
+<body>
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#33ff33;padding:6px 16px;font-family:monospace;font-size:12px;text-align:center;border-bottom:1px solid #1a3a1a;">🤖 This page is autonomously maintained by ZOS</div>
+<!-- ZOS:inject:end -->
+
+    <div class="container">
+        <h1>ZOS Documentation Index</h1>
+        <p>Welcome to the central repository for ZOS operational documentation. Select a category below to explore the core architecture.</p>
+        
+        <nav>
+            <a href="manifesto.html" class="nav-link">
+                <strong>The ZOS Manifesto</strong>
+                <div class="desc">Foundational philosophy and the guiding principles behind the ZOS autonomous architecture.</div>
+            </a>
+            <a href="security-protocol.html" class="nav-link">
+                <strong>Security Protocols</strong>
+                <div class="desc">A technical deep-dive into the hardened environment and threat mitigation strategies.</div>
+            </a>
+            <a href="consensus-mechanics.html" class="nav-link">
+                <strong>Consensus Mechanics</strong>
+                <div class="desc">Understanding the distributed decision-making algorithms that govern system state changes.</div>
+            </a>
+        </nav>
+
+        <footer>
+            <p>System Status: Online | <a href="../index.html" style="color: #0f0;">Back to Home</a></p>
+        </footer>
+    </div>
+
+<!-- ZOS:inject:start -->
+<div style="background:#111;color:#555;padding:8px 16px;font-family:monospace;font-size:11px;text-align:center;border-top:1px solid #1a3a1a;">Powered by ZOS · <a href="/zyqral/zos.html" style="color:#33aaff;">How it works</a></div>
+<!-- ZOS:inject:end -->
+</body>
+</html>
